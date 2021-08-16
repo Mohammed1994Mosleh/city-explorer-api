@@ -4,7 +4,11 @@ const server=express();
 
 const PORT = process.env.PORT;
 
+const cors = require('cors')
+
 const cityData = require('./data/weather.json');
+
+server.use(cors());
 
 
 class Forecast {
