@@ -1,14 +1,11 @@
 const express=require('express');
 require('dotenv').config();
 const server=express();
-
 const PORT = process.env.PORT;
-
 const cors = require('cors')
-
 const cityData = require('./data/weather.json');
-
 server.use(cors());
+let axios=require('axios')
 
 
 class Forecast {
@@ -24,8 +21,24 @@ this.date=`${date}`
 
 }
 
+}
+
+class Forecast1{
+constructor(item){
+this.datetime=item.datetime;
+// this.temp=temp;
+this.description=item.weather.description
+
+}
 
 
+}
+
+
+class Movie{
+constructor (){
+  
+}
 
 }
 
@@ -42,28 +55,23 @@ if (item.city_name == cityNmae){
 
 return item.data
 
-  }
- }
-)
+}})
   
 let newArr=[]
-// console.log(cityLoc.data);
 
-  cityLoc.data.forEach( element => {
+cityLoc.data.forEach( element => {
 
-
-
-     
     let newOb=new Forecast(element.low_temp,element.max_temp,element.weather.description ,element.valid_date)
     newArr.push(newOb)
 
          
   });
-//   console.log(newArr);
+
 
   res.send(newArr);
 
 } )
+//localhost:3001/weather1?searchQuery=Amman
 
 server.get('*',(req,res)=>{
     res.status(404).send('not found')
