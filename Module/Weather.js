@@ -8,7 +8,7 @@ async function weatherHandler(req,res){
 
     if(inMemory[cityNmae] != undefined){
         console.log(' cache hit , data in cache memory');
-        res.send(inMemory[photoSearchQuery]);
+        res.send(inMemory[cityNmae]);
 
     }
     else{
